@@ -1,23 +1,57 @@
 <% if logged_in? %>
 
   <div class="row">
-    <aside class="col-sm-4">
+    <aside class="col-sm-6">
       
 <%= form_with(model: @micropost, local: true) do |f| %>
 
+    
+
         <div class="form-group">
+          <table class="attr">
+            <tr>
+              <th><%= f.label :"チーム名" %></th>
+              <td><%= f.text_area :teamname, class: 'form-control', size: 20 %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :"場所" %></th>
+              <td><%= f.text_area :place, class: 'form-control', rows: 1 %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :"人数" %></th>
+              <td><%= f.text_area :member, class: 'form-control', rows: 1 %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :"時間" %></th>
+              <td><%= f.text_area :time, class: 'form-control', rows: 1 %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :"レベル" %></th>
+              <td><%= f.text_area :level, class: 'form-control', rows: 1 %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :"内容" %></th>
+              <td><%= f.text_area :content, class: 'form-control', rows: 5 %></td>
+            </tr>
+            
+            <tr><%= f.submit 'Post', class: 'btn btn-primary btn-block' %></tr>
           
-<%= f.text_area :content, class: 'form-control', rows: 5 %>
+
+
+
+
+
+
 
         </div>
         
-<%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+
 
       
 <% end %>
 
     </aside>
-    <div class="col-sm-8">
+    <div class="row">
       
 <%= render 'microposts/microposts', microposts: @microposts %>
 

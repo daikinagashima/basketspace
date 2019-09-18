@@ -1,21 +1,36 @@
 <ul class="list-unstyled">
   <% microposts.each do |micropost| %>
-    <li class="media mb-3">
+    <li class="media mb-12">
       <img class="mr-2 rounded" src="<%= gravatar_url(micropost.user, { size: 50 }) %>" alt="">
       <div class="media-body">
         <div>
           <%= link_to micropost.user.name, user_path(micropost.user) %> <span class="text-muted">posted at <%= micropost.created_at %></span>
         </div>
         <div>
-          <p class="md-0"><%= micropost.content %></p>
+          
+          <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+            <h2 class="teamname">
+              <p class="md-0">チーム名:<%= micropost.teamname %></p>
+          <h3>
+          <p class="md-0">場所:<%= micropost.place %></p>
+          <p class="md-0">人数:<%= micropost.member %>人</p>
+          <p class="md-0">活動時間:<%= micropost.time %></p>
+          <p class="md-0">レベル<%= micropost.lebel %></p>
+          <p class="md-0">内容:<%= micropost.content %></p>
+          </h3>
         </div>
-        <div>
+          
+        </div>
+      </div>
+      <div>
             <% if current_user == micropost.user %>
              <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?"},class: "btn btn-danger btn-sm" %>
             <% end %>
             <%= render 'favorites/favorite', micropost: micropost %>
         </div>
-      </div>
     </li>
   <% end %>
   <%= paginate microposts %>
